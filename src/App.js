@@ -120,6 +120,12 @@ function evaluate({ currentOperand, previousOperand, operation }) {
     case "%":
       computation = (prev/100)*current;
       break
+    case "^":
+      computation = Math.pow(prev, current);
+      break
+    case "√":
+      computation = Math.sqrt(current);
+      break
     default :
       return ""
 
@@ -158,7 +164,7 @@ function App() {
       >
         AC
       </button>
-      <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>
+      <button className="span-two" onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>
         DEL
       </button>
       <OperationButton operation="÷" dispatch={dispatch} />
@@ -166,17 +172,20 @@ function App() {
       <DigitButton digit="8" dispatch={dispatch} />
       <DigitButton digit="9" dispatch={dispatch} />
       <OperationButton operation="*" dispatch={dispatch} />
+      <OperationButton operation="-" dispatch={dispatch} />
       <DigitButton digit="4" dispatch={dispatch} />
       <DigitButton digit="5" dispatch={dispatch} />
       <DigitButton digit="6" dispatch={dispatch} />
       <OperationButton operation="+" dispatch={dispatch} />
+      <OperationButton operation="%" dispatch={dispatch} />
       <DigitButton digit="1" dispatch={dispatch} />
       <DigitButton digit="2" dispatch={dispatch} />
       <DigitButton digit="3" dispatch={dispatch} />
-      <OperationButton operation="-" dispatch={dispatch} />
-      <DigitButton digit="." dispatch={dispatch} />
+      <OperationButton operation="^" dispatch={dispatch} />
+      <OperationButton operation="√" dispatch={dispatch} />
       <DigitButton digit="0" dispatch={dispatch} />
-      <OperationButton operation="%" dispatch={dispatch} />
+      <DigitButton digit="." dispatch={dispatch} />
+
       <button
         onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
       >
